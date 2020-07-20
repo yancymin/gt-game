@@ -26,27 +26,30 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 40px);
   position: fixed;
   bottom: 20px;
-  padding: 0 20px;
 
   &::before {
     z-index: -1;
     position: absolute;
-    right: 0;
+    right: -20px;
     bottom: -20px;
     content: '';
     display: block;
-    width: 35%;
-    height: 280%;
-    background: url('../assets/dots-3.png') no-repeat center;
-    background-size: cover;
+    width: 40%;
+    height: 400%;
+    background: url('../assets/dots-3.svg') no-repeat top left;
+    background-size: 160%;
     background-blend-mode: darken;
   }
 
   img {
-    width: 40%;
+    width: 30%;
+
+    &:last-child {
+      width: 45%;
+    }
   }
 }
 </style>
