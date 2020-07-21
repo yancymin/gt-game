@@ -48,30 +48,28 @@ export default {
   name: 'Game',
   data() {
     return {
-    }
+      code: [],
+    };
   },
   mounted() {
     const inputs = document.querySelectorAll('input');
-    let code = [];
     inputs[0].focus();
-    inputs.forEach(item => {
+    inputs.forEach((item) => {
       item.addEventListener('input', () => {
-        {
-          if (item.value) {
-            if (item.value.length == 1) {
-              if (code.length <= inputs.length - 1) {
-                code.push(item.value);
-              }
-              console.log(code);
-              if (item.nextSibling) {
-                item.nextSibling.focus();
-              }
+        if (item.value) {
+          if (item.value.length === 1) {
+            if (this.code.length <= inputs.length - 1) {
+              this.code.push(item.value);
+            }
+            console.log(this.code);
+            if (item.nextSibling) {
+              item.nextSibling.focus();
             }
           }
         }
-      })
-    })
-  }
+      });
+    });
+  },
 };
 </script>
 
