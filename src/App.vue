@@ -8,7 +8,7 @@
 @import url('./style/reset.css');
 
 body {
-  background: #F5BA40;
+  background: #ffb800;
 }
 
 #app {

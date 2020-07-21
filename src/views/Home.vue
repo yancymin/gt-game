@@ -32,14 +32,14 @@ export default {
     };
   },
   mounted() {
-    const heroBg = document.querySelector('.hero_bg');
-    window.addEventListener('deviceorientation', (event) => {
-      this.z = event.alpha;
-      this.x = event.beta;
-      this.y = event.gamma;
-      console.log(heroBg);
-      heroBg.style.transform = `translateY(${event.gamma}px)`;
-    }, false);
+    // const heroBg = document.querySelector('.hero_bg');
+    // window.addEventListener('deviceorientation', (event) => {
+    //   this.z = event.alpha;
+    //   this.x = event.beta;
+    //   this.y = event.gamma;
+    //   console.log(heroBg);
+    //   heroBg.style.transform = `translateY(${event.gamma}px)`;
+    // }, false);
   },
 };
 </script>
@@ -55,6 +55,7 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 10% 0 0 0;
 
     .slogn {
       z-index: 10;
@@ -94,8 +95,8 @@ export default {
         background: white;
         transform-origin: left;
         transform: scaleX(0);
-        animation: lineShow 0.6s ease forwards 0.4s;
         mix-blend-mode: color;
+        animation: lineShow 0.6s ease forwards 0.4s;
       }
 
       &::before {
@@ -109,8 +110,8 @@ export default {
         background: white;
         transform-origin: left;
         transform: scaleX(0);
-        animation: lineShow 0.6s ease forwards 0.8s;
         mix-blend-mode: color;
+        animation: lineShow 0.6s ease forwards 0.8s;
       }
     }
 
@@ -144,7 +145,7 @@ export default {
 
       &_4 {
         z-index: 9999;
-        bottom: -16%;
+        bottom: -22%;
         width: 40%;
       }
     }

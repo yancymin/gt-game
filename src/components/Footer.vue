@@ -1,5 +1,6 @@
 <template>
   <footer class="footer">
+    <span id="texture"></span>
     <img src="../assets/footer_1.svg" @click="link1" />
     <img src="../assets/footer_2.svg" @click="link" />
   </footer>
@@ -49,6 +50,42 @@ footer {
 
     &:last-child {
       width: 45%;
+    }
+  }
+
+  #texture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+
+    &::before {
+      z-index: -1;
+      position: absolute;
+      right: 0;
+      top: 3px;
+      content: '';
+      display: block;
+      width: 60%;
+      height: 99%;
+      background: url('../assets/dots-3.svg') no-repeat top left;
+      background-size: 100%;
+      background-blend-mode: darken;
+    }
+
+    &::after {
+      z-index: -1;
+      position: absolute;
+      left: -30%;
+      bottom: -60%;
+      content: '';
+      display: block;
+      width: 60%;
+      height: 80%;
+      background: url('../assets/dots-3.svg') no-repeat top left;
+      background-size: 100%;
+      background-blend-mode: darken;
     }
   }
 }
