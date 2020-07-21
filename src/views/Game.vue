@@ -13,11 +13,18 @@
     </header>
     <main>
       <img src="../assets/code-9685.png" id="code" />
-      <div class="input-wrap">
-        <input type="tel" name="input-1" id="input-1" maxlength="1" size="1" />
-        <input type="tel" name="input-2" id="input-2" maxlength="1" size="1" />
-        <input type="tel" name="input-3" id="input-3" maxlength="1" size="1" />
-        <input type="tel" name="input-4" id="input-4" maxlength="1" size="1" />
+      <div class="input-wrap" ref="wrap">
+        <input
+          v-for="(val, i) in new Array(4)"
+          :key="i"
+          :value="code[i] || ''"
+          type="tel"
+          :name="`input-${i}`"
+          :id="`input-${i}`"
+          maxlength="1"
+          size="1"
+          @input="e => inputHandle(i, e)"
+        />
       </div>
     </main>
   </div>
@@ -33,27 +40,15 @@ export default {
       result: '',
     };
   },
+  methods: {
+    inputHandle(index, e) {
+      const { value, nextSibling } = e.target;
+      this.code.splice(index, 1, value);
+      nextSibling && nextSibling.focus();
+    },
+  },
   mounted() {
-    this.imgSrc = document.querySelector('#code').src.toString();
-    console.log(this.imgSrc);
-    const inputs = document.querySelectorAll('input');
-    inputs[0].focus();
-    inputs.forEach((item) => {
-      item.addEventListener('input', () => {
-        window.scrollTo(0, 0);
-        if (item.value) {
-          if (item.value.length === 1) {
-            if (this.code.length <= inputs.length - 1) {
-              this.code.push(item.value);
-            }
-            console.log(this.code);
-            if (item.nextSibling) {
-              item.nextSibling.focus();
-            }
-          }
-        }
-      });
-    });
+    this.$refs.wrap.children[0].focus();
   },
 };
 </script>
@@ -159,7 +154,7 @@ export default {
 
       input {
         display: flex;
-        padding: 0;
+        padding: 4px 0;
         width: 100%;
         height: 100%;
         margin: 2%;
