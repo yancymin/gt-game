@@ -35,11 +35,22 @@ export default {
 
 <style lang="scss" scoped>
 button {
+  z-index: 99;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 80%;
+  height: 14%;
   border-radius: 800px;
+  background: #ffffff;
+  border: 4px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  outline: none;
+
+  &:active {
+    transform: translateX(3%) translateY(3%);
+  box-shadow: 0 0 0 #000000;
+  }
 
   img {
     width: 60%;
@@ -47,7 +58,7 @@ button {
   }
 
   svg {
-    width: 20%;
+    width: 30%;
   }
 }
 </style>
