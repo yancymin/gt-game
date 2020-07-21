@@ -14,10 +14,10 @@
     <main>
       <img src="../assets/code-9685.png" class="code" />
       <div class="input-wrap">
-        <input type="tel" name="input-1" id="input-1" maxlength="1" />
-        <input type="tel" name="input-2" id="input-2" maxlength="1" />
-        <input type="tel" name="input-3" id="input-3" maxlength="1" />
-        <input type="tel" name="input-4" id="input-4" maxlength="1" />
+        <input type="tel" name="input-1" id="input-1" maxlength="1" size="1"/>
+        <input type="tel" name="input-2" id="input-2" maxlength="1" size="1"/>
+        <input type="tel" name="input-3" id="input-3" maxlength="1" size="1"/>
+        <input type="tel" name="input-4" id="input-4" maxlength="1" size="1"/>
       </div>
     </main>
   </div>
