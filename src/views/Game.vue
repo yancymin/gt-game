@@ -15,25 +15,25 @@
       <img src="../assets/code-9685.png" class="code" />
       <div class="input-wrap">
         <input
-          type="text"
+          type="tel"
           name="input-1"
           id="input-1"
           oninput="if(value.length>1)value=value.slice(0,1)"
         />
         <input
-          type="text"
+          type="tel"
           name="input-2"
           id="input-2"
           oninput="if(value.length>1)value=value.slice(0,1)"
         />
         <input
-          type="text"
+          type="tel"
           name="input-3"
           id="input-3"
           oninput="if(value.length>1)value=value.slice(0,1)"
         />
         <input
-          type="text"
+          type="tel"
           name="input-4"
           id="input-4"
           oninput="if(value.length>1)value=value.slice(0,1)"
