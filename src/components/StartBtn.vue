@@ -36,13 +36,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+a {
+  z-index: 9999;
+  width: 80%;
+  height: 14%;
+}
 button {
   z-index: 99;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 80%;
-  height: 14%;
+  width: 100%;
+  height: 100%;
   border-radius: 800px;
   background: #ffffff;
   border: 4px solid #000000;
@@ -61,6 +66,7 @@ button {
 
   svg {
     width: 30%;
+    height: 100%;
   }
 }
 </style>
