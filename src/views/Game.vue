@@ -12,7 +12,7 @@
       </div>
     </header>
     <main>
-      <img src="../assets/code-9685.png" class="code" />
+      <img src="../assets/code-9685.png" id="code" />
       <div class="input-wrap">
         <input type="tel" name="input-1" id="input-1" maxlength="1" size="1" />
         <input type="tel" name="input-2" id="input-2" maxlength="1" size="1" />
@@ -29,10 +29,13 @@ export default {
   data() {
     return {
       code: [],
-      //   imgSrc: document.querySelector('#code').src,
+      imgSrc: '',
+      result: '',
     };
   },
   mounted() {
+    this.imgSrc = document.querySelector('#code').src.toString();
+    console.log(this.imgSrc);
     const inputs = document.querySelectorAll('input');
     inputs[0].focus();
     inputs.forEach((item) => {
@@ -144,7 +147,7 @@ export default {
     height: 100vh;
     padding: 15% 10%;
 
-    .code {
+    #code {
       width: 50%;
     }
 
@@ -155,7 +158,8 @@ export default {
       align-items: center;
 
       input {
-        display: inline-block;
+        display: flex;
+        padding: 0;
         width: 100%;
         height: 100%;
         margin: 2%;
