@@ -37,6 +37,7 @@ export default {
     inputs[0].focus();
     inputs.forEach((item) => {
       item.addEventListener('input', () => {
+        window.scrollTo(0, 0);
         if (item.value) {
           if (item.value.length === 1) {
             if (this.code.length <= inputs.length - 1) {
@@ -44,7 +45,6 @@ export default {
             }
             console.log(this.code);
             if (item.nextSibling) {
-              window.scrollTo(0, 0);
               item.nextSibling.focus();
             }
           }
