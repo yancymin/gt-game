@@ -49,6 +49,7 @@ export default {
   data() {
     return {
       code: [],
+      imgSrc: document.querySelector('#code').src,
     };
   },
   mounted() {
@@ -187,6 +188,7 @@ export default {
         text-align: center;
         font-weight: 700;
         transition: all 0.1s ease-out;
+        -webkit-appearance: none;
 
         &:focus {
           outline: none;
