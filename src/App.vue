@@ -9,6 +9,8 @@
 
 body {
   background: #ffb800;
+  height: 100vh;
+  overflow: hidden;
 }
 
 #app {
