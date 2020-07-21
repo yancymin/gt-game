@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       code: [],
-      imgSrc: document.querySelector('#code').src,
+      //   imgSrc: document.querySelector('#code').src,
     };
   },
   mounted() {
