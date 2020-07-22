@@ -62,7 +62,7 @@ export default {
     resultHandle() {
       console.log('resultHandle');
       this.code = this.code.join('');
-      this.result = document.querySelector('#code').src.slice(document.querySelector('#code').src.indexOf('code-') + 5, 36);
+      this.result = this.$refs.code.src.slice(document.querySelector('#code').src.indexOf('code-') + 5, 36);
       console.log(this.result, this.code);
       if (this.code === this.result) {
         console.log('success');
@@ -96,7 +96,7 @@ export default {
   mounted() {
     this.$refs.wrap.children[0].focus();
     this.codeSrcRandom();
-    this.result = document.querySelector('#code').src.slice(document.querySelector('#code').src.indexOf('code-') + 5, 36);
+    this.result = this.$refs.code.src.slice(document.querySelector('#code').src.indexOf('code-') + 5, 36);
   },
 };
 </script>
