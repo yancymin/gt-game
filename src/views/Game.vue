@@ -62,7 +62,7 @@ export default {
     resultHandle() {
       console.log('resultHandle');
       this.code = this.code.join('');
-      this.result = this.$refs.code.src.slice(this.$refs.codeWrap.children[0].src.indexOf('code-') + 5, 36);
+      this.result = this.$refs.code.src.slice(32, 36);
       console.log(this.result, this.code);
       if (this.code === this.result) {
         console.log('success');
