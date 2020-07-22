@@ -76,7 +76,6 @@ export default {
           this.status = 0;
           setTimeout(() => {
             this.codeSrcRandom();
-            // this.$refs.code.src = `code/code-${this.testArr[Math.floor(Math.random() * this.testArr.length)]}.png`;
           }, 200);
         }, 1000);
       } else {
@@ -89,7 +88,6 @@ export default {
           this.status = 0;
           setTimeout(() => {
             this.codeSrcRandom();
-            // this.$refs.code.src = `code/code-${this.testArr[Math.floor(Math.random() * this.testArr.length)]}.png`;
           }, 200);
         }, 1000);
       }
