@@ -31,6 +31,14 @@
         />
       </div>
     </main>
+    <div class="keyboard">
+      <div
+        v-for="(item, index) in new Array(10)"
+        :key="index"
+        :id="`key-${index}`"
+        @click="e => getKey(index, e)"
+      >{{1+index}}</div>
+    </div>
   </div>
 </template>
 
@@ -55,7 +63,7 @@ export default {
     inputHandle(index, e) {
       const { value, nextSibling } = e.target;
       this.code.splice(index, 1, value);
-      nextSibling && nextSibling.focus();
+      nextSibling && nextSibling.focus(() => document.activeElement.blur());
       this.code.length === 4 && this.resultHandle();
       // console.log(this.code.join(''), document.querySelector('#code').src);
     },
@@ -72,7 +80,7 @@ export default {
         this.$refs.status.src = '/game-success.svg';
         setTimeout(() => {
           this.code = [];
-          this.$refs.wrap.children[0].focus();
+          this.$refs.wrap.children[0].focus(() => document.activeElement.blur());
           this.status = 0;
           setTimeout(() => {
             this.codeSrcRandom();
@@ -91,6 +99,9 @@ export default {
           }, 200);
         }, 1000);
       }
+    },
+    getKey(index, e) {
+      console.log(e.target.textContent, index);
     },
   },
   mounted() {
@@ -237,6 +248,42 @@ export default {
           transform: translateX(5%) translateY(5%);
         }
       }
+    }
+  }
+}
+
+.keyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 40%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 2%;
+  padding: 16px;
+  box-shadow: inset 0 0 0 4px #000;
+  border-radius: 20px 20px 0 0;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: #ffffff;
+    border: 4px solid #000000;
+    border-radius: 10px;
+    color: #000;
+    font-weight: 700;
+    font-size: 35px;
+
+    &:active {
+      background: #fbe3a2;
+    }
+
+    &:last-child {
+      grid-column-end: 3;
     }
   }
 }
