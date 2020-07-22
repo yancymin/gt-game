@@ -1,3 +1,4 @@
+<!-- eslint-disable max-len -->
 <template>
   <div id="game">
     <header>
@@ -8,11 +9,14 @@
         </div>
       </div>
       <div class="countdown">
-        <p>0</p>
+        <p ref="successCount">0</p>
       </div>
     </header>
     <main>
-      <img src="../assets/code-9685.png" id="code" />
+      <div class="code-wrap">
+        <img src="code/code-1111.png" id="code" alt="code" ref="code" />
+        <img v-show="this.status" src="/game-success.svg" alt="status" class="status" ref="status" />
+      </div>
       <div class="input-wrap" ref="wrap">
         <input
           v-for="(val, i) in new Array(4)"
@@ -38,13 +42,51 @@ export default {
       code: [],
       imgSrc: '',
       result: '',
+      successCount: 0,
+      status: 0,
+      testArr: ['9685', '0000', '1111'],
     };
   },
   methods: {
     inputHandle(index, e) {
       const { value, nextSibling } = e.target;
       this.code.splice(index, 1, value);
-      nextSibling && nextSibling.focus();
+      nextSibling ? nextSibling.focus() : null;
+      this.code.length === 4 ? this.resultHandle() : null;
+      // console.log(this.code.join(''), document.querySelector('#code').src);
+    },
+    resultHandle() {
+      console.log('resultHandle');
+      this.code = this.code.join('');
+      this.result = document.querySelector('#code').src.slice(document.querySelector('#code').src.indexOf('code-') + 5, 36);
+      console.log(this.result, this.code);
+      if (this.code === this.result) {
+        console.log('success');
+        this.successCount += 1;
+        this.$refs.successCount.textContent = this.successCount;
+        this.status = 1;
+        this.$refs.status.src = '/game-success.svg';
+        setTimeout(() => {
+          this.code = [];
+          this.status = 0;
+          setTimeout(() => {
+            this.$refs.code.src = `code/code-${this.testArr[Math.floor(Math.random() * this.testArr.length)]}.png`;
+            this.$refs.wrap.children[0].focus();
+          }, 200);
+        }, 600);
+      } else {
+        console.log('error');
+        this.status = 1;
+        this.$refs.status.src = '/game-error.svg';
+        setTimeout(() => {
+          this.code = [];
+          this.status = 0;
+          setTimeout(() => {
+            this.$refs.code.src = `code/code-${this.testArr[Math.floor(Math.random() * this.testArr.length)]}.png`;
+            this.$refs.wrap.children[0].focus();
+          }, 200);
+        }, 600);
+      }
     },
   },
   mounted() {
@@ -142,8 +184,20 @@ export default {
     height: 100vh;
     padding: 15% 10%;
 
-    #code {
+    .code-wrap {
+      position: relative;
       width: 50%;
+
+      .status {
+        position: absolute;
+        right: -10%;
+        bottom: -12%;
+        width: 30%;
+      }
+    }
+
+    #code {
+      width: 100%;
     }
 
     .input-wrap {
