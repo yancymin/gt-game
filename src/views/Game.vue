@@ -13,7 +13,7 @@
       </div>
     </header>
     <main>
-      <div class="code-wrap">
+      <div class="code-wrap" ref="codeWrap">
         <img :src="`code/code-`+this.codeSrc+`.png`" id="code" alt="code" ref="code" />
         <img v-show="this.status" src="/game-success.svg" alt="status" class="status" ref="status" />
       </div>
@@ -62,7 +62,7 @@ export default {
     resultHandle() {
       console.log('resultHandle');
       this.code = this.code.join('');
-      this.result = this.$refs.code.src.slice(document.querySelector('#code').src.indexOf('code-') + 5, 36);
+      this.result = this.$refs.code.src.slice(this.$refs.codeWrap.children[0].src.indexOf('code-') + 5, 36);
       console.log(this.result, this.code);
       if (this.code === this.result) {
         console.log('success');
