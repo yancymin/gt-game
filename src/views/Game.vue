@@ -62,7 +62,7 @@ export default {
     resultHandle() {
       console.log('resultHandle');
       this.code = this.code.join('');
-      this.result = this.$refs.code.src.slice(32, 36);
+      this.result = this.$refs.code.src.slice(-8, -4);
       console.log(this.result, this.code);
       if (this.code === this.result) {
         console.log('success');
