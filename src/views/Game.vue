@@ -51,8 +51,8 @@ export default {
     inputHandle(index, e) {
       const { value, nextSibling } = e.target;
       this.code.splice(index, 1, value);
-      nextSibling ? nextSibling.focus() : null;
-      this.code.length === 4 ? this.resultHandle() : null;
+      nextSibling && nextSibling.focus();
+      this.code.length === 4 && this.resultHandle();
       // console.log(this.code.join(''), document.querySelector('#code').src);
     },
     resultHandle() {
@@ -68,24 +68,24 @@ export default {
         this.$refs.status.src = '/game-success.svg';
         setTimeout(() => {
           this.code = [];
+          this.$refs.wrap.children[0].focus();
           this.status = 0;
           setTimeout(() => {
             this.$refs.code.src = `code/code-${this.testArr[Math.floor(Math.random() * this.testArr.length)]}.png`;
-            this.$refs.wrap.children[0].focus();
           }, 200);
-        }, 600);
+        }, 1000);
       } else {
         console.log('error');
         this.status = 1;
         this.$refs.status.src = '/game-error.svg';
         setTimeout(() => {
           this.code = [];
+          this.$refs.wrap.children[0].focus();
           this.status = 0;
           setTimeout(() => {
             this.$refs.code.src = `code/code-${this.testArr[Math.floor(Math.random() * this.testArr.length)]}.png`;
-            this.$refs.wrap.children[0].focus();
           }, 200);
-        }, 600);
+        }, 1000);
       }
     },
   },
