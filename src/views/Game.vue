@@ -14,7 +14,7 @@
     </header>
     <main>
       <div class="code-wrap">
-        <img src="code/code-1111.png" id="code" alt="code" ref="code" />
+        <img :src="`code/code-`+this.codeSrc+`.png`" id="code" alt="code" ref="code" />
         <img v-show="this.status" src="/game-success.svg" alt="status" class="status" ref="status" />
       </div>
       <div class="input-wrap" ref="wrap">
@@ -45,9 +45,13 @@ export default {
       successCount: 0,
       status: 0,
       testArr: ['9685', '0000', '1111'],
+      codeSrc: null,
     };
   },
   methods: {
+    codeSrcRandom() {
+      this.codeSrc = this.testArr[Math.floor(Math.random() * this.testArr.length)];
+    },
     inputHandle(index, e) {
       const { value, nextSibling } = e.target;
       this.code.splice(index, 1, value);
@@ -71,7 +75,8 @@ export default {
           this.$refs.wrap.children[0].focus();
           this.status = 0;
           setTimeout(() => {
-            this.$refs.code.src = `code/code-${this.testArr[Math.floor(Math.random() * this.testArr.length)]}.png`;
+            this.codeSrcRandom();
+            // this.$refs.code.src = `code/code-${this.testArr[Math.floor(Math.random() * this.testArr.length)]}.png`;
           }, 200);
         }, 1000);
       } else {
@@ -83,7 +88,8 @@ export default {
           this.$refs.wrap.children[0].focus();
           this.status = 0;
           setTimeout(() => {
-            this.$refs.code.src = `code/code-${this.testArr[Math.floor(Math.random() * this.testArr.length)]}.png`;
+            this.codeSrcRandom();
+            // this.$refs.code.src = `code/code-${this.testArr[Math.floor(Math.random() * this.testArr.length)]}.png`;
           }, 200);
         }, 1000);
       }
@@ -91,6 +97,7 @@ export default {
   },
   mounted() {
     this.$refs.wrap.children[0].focus();
+    this.codeSrcRandom();
   },
 };
 </script>
