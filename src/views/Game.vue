@@ -96,6 +96,7 @@ export default {
   mounted() {
     this.$refs.wrap.children[0].focus();
     this.codeSrcRandom();
+    this.result = document.querySelector('#code').src.slice(document.querySelector('#code').src.indexOf('code-') + 5, 36);
   },
 };
 </script>
@@ -228,6 +229,7 @@ export default {
         font-weight: 700;
         transition: all 0.1s ease-out;
         -webkit-appearance: none;
+        pointer-events: none;
 
         &:focus {
           outline: none;
