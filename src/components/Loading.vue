@@ -6,7 +6,7 @@
 export default {
   data() {
     return {
-      count: 0,
+      codeSrc: [],
     };
   },
   mounted() {
@@ -14,18 +14,13 @@ export default {
   },
   methods: {
     preload() {
-      const imgs = [
-        'code/code-9685.png',
-        'code/code-0000.png',
-        'code/code-1111.png',
-      ];
-      imgs.forEach((img) => {
+      const context = require.context('../assets/codeImgs', false, /\d+.svg/);
+      context.keys().forEach((k) => {
         const image = new Image();
-        image.src = img;
-        image.onload = () => {
-          this.count += 1;
-        };
+        image.src = context(k);
+        this.codeSrc.push(context(k));
       });
+      localStorage.setItem('code', this.codeSrc);
     },
   },
 };
