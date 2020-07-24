@@ -73,7 +73,7 @@ export default {
       this.imgSrc = this.codeImgSrc[Math.floor(Math.random() * this.codeImgSrc.length)];
       this.result = this.imgSrc.split('/img/')[1].split('.')[0];
       this.currentKeys = [];
-      this.$refs.wrap.children[0].focus(() => document.activeElement.blur());
+      // this.$refs.wrap.children[0].focus(() => document.activeElement.blur());
     },
     // inputHandle(index, e) {
     //   const { nextSibling } = e.target;
@@ -96,7 +96,7 @@ export default {
         this.$refs.status.src = '/game-success.svg';
         setTimeout(() => {
           this.code = [];
-          this.$refs.wrap.children[0].focus(() => document.activeElement.blur());
+          // this.$refs.wrap.children[0].focus(() => document.activeElement.blur());
           this.status = 0;
           setTimeout(() => {
             this.codeSrcRandom();
@@ -111,7 +111,7 @@ export default {
         setTimeout(() => {
           this.code = [];
           this.status = 0;
-          this.$refs.wrap.children[0].focus(() => document.activeElement.blur());
+          // this.$refs.wrap.children[0].focus(() => document.activeElement.blur());
           setTimeout(() => {
             this.codeSrcRandom();
             this.error = 0;
@@ -134,11 +134,11 @@ export default {
           this.resultHandle();
         }
       }
-      this.currentKeys.length === 1 ? this.$refs.wrap.children[1].focus() : null;
-      this.currentKeys.length === 2 ? this.$refs.wrap.children[2].focus() : null;
-      this.currentKeys.length === 3 ? this.$refs.wrap.children[3].focus() : null;
-      this.currentKeys.length === 4 ? this.$refs.wrap.children[4].focus() : null;
-      this.currentKeys.length === 5 ? this.$refs.wrap.children[5].focus() : null;
+      // this.currentKeys.length === 1 ? this.$refs.wrap.children[1].focus() : null;
+      // this.currentKeys.length === 2 ? this.$refs.wrap.children[2].focus() : null;
+      // this.currentKeys.length === 3 ? this.$refs.wrap.children[3].focus() : null;
+      // this.currentKeys.length === 4 ? this.$refs.wrap.children[4].focus() : null;
+      // this.currentKeys.length === 5 ? this.$refs.wrap.children[5].focus() : null;
     },
   },
   mounted() {
