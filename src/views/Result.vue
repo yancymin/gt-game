@@ -1,5 +1,7 @@
 <template>
-  <div>ddd</div>
+  <div>
+      <router-link to="/">ddd</router-link>
+  </div>
 </template>
 
 <script>
