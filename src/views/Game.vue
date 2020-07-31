@@ -126,7 +126,7 @@ export default {
       this.currentKeys.push(index === 9 ? 0 : index + 1);
       const inputs = document.querySelectorAll('input');
       for (let i = 0; i <= this.result.length; i += 1) {
-        this.currentKeys[i] ? inputs[i].value = this.currentKeys[i] : null;
+        typeof this.currentKeys[i] === 'number' ? inputs[i].value = this.currentKeys[i] : null;
       }
       console.log(e.target.textContent, index, this.currentKeys);
       if (this.currentKeys.length === this.result.length) {

@@ -3,6 +3,12 @@
    License: none (public domain)
 */
 
+@font-face {
+  font-family: DIN;
+  font-weight: bold;
+  src: url('../assets/DIN.otf') format('opentype');
+}
+
 html,
 body,
 div,

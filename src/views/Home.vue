@@ -1,34 +1,47 @@
 <template>
   <div class="home">
+    <Voice />
     <main>
       <div class="hero">
         <img src="../assets/hero-2.png" alt class="hero_bg" />
         <img src="../assets/hero-1.png" alt class="hero_text" />
         <img src="../assets/hero-3.png" alt class="hero_3" />
         <img src="../assets/hero-4.png" alt class="hero_4" />
+        <img src="../assets/hero-5.png" alt class="hero_5" />
       </div>
       <span class="slogn"></span>
-      <StartBtn />
+      <CommonBtn type="start" />
     </main>
     <Footer />
+    <DotBg :dots="dots"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Footer from '@/components/Footer.vue';
-import StartBtn from '@/components/StartBtn.vue';
+import CommonBtn from '@/components/CommonBtn.vue';
+import DotBg from '@/components/DotBg.vue';
+import Voice from '@/components/Voice.vue';
 
 export default {
   name: 'Home',
   components: {
-    Footer, StartBtn,
+    Footer,
+    CommonBtn,
+    DotBg,
+    Voice,
   },
   data() {
     return {
       z: 0,
       x: 0,
       y: 0,
+      dots: [
+        [null, -54, 0, null, '44%'],
+        [160, null, null, -100, '44%'],
+        [-100, 0, null, null, '60%'],
+      ],
     };
   },
   mounted() {
@@ -119,7 +132,7 @@ export default {
       position: relative;
       width: 100%;
       height: 40%;
-      z-index: 999;
+      z-index: 9;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -128,12 +141,48 @@ export default {
         position: absolute;
       }
 
+      @keyframes move {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        40% {
+          transform: translate3d(5px, 10px, 0);
+        }
+        50% {
+          transform: translate3d(0, 0, 0);
+        }
+        60% {
+          transform: translate3d(-3px, -8px, 0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      @keyframes move1 {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        20% {
+          transform: translate3d(2px, 5px, 0);
+        }
+        50% {
+          transform: translate3d(0, 0, 0);
+        }
+        80% {
+          transform: translate3d(-8px, -3px, 0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
       &_bg {
         width: 90%;
       }
 
       &_text {
-        z-index: 999;
+        z-index: 9;
         width: 100%;
       }
 
@@ -141,12 +190,22 @@ export default {
         bottom: -5%;
         left: 0;
         width: 20%;
+        animation: move 3s linear infinite;
       }
 
       &_4 {
-        z-index: 9999;
+        z-index: 10;
         bottom: -22%;
         width: 40%;
+        animation: move1 3s linear infinite;
+      }
+
+      &_5 {
+        z-index: 8;
+        top: 12%;
+        right: 10%;
+        width: 20%;
+        animation: move 3s linear infinite;
       }
     }
   }
