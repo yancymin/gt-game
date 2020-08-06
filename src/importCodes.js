@@ -4,9 +4,9 @@
  * @returns {Array<string>} 返回的所有图片
  */
 function loadFrames(context) {
-    const frames = []
-    context.keys().forEach(k => {
-        frames.push(context(k))
-    })
-    return frames
+  const frames = [];
+  context.keys().forEach((k) => {
+    frames.push(context(k));
+  });
+  return frames;
 }

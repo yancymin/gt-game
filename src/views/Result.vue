@@ -1,24 +1,32 @@
 <template>
   <div class="home">
     <main>
-      <img class="share-dot" src="../assets/result/share-dot.png" alt="">
+      <img class="share-dot" src="../assets/result/share-dot.png" alt />
       <div class="grades">
         <h1>23</h1>
       </div>
       <div class="desc">
-        <img src="../assets/result/desc.svg" alt="desc">
-        <h2>23</h2>
-        <h2>87%</h2>
+        <div class="desc-1">
+          <h2>23</h2>
+          <img src="../assets/result/desc-1.svg" alt="desc" />
+        </div>
+        <div class="desc-2">
+          <h2>87%</h2>
+          <img src="../assets/result/desc-2.svg" alt="desc" />
+        </div>
       </div>
       <div class="result">
-        <img src="../assets/result/1.png" alt="result">
+        <img :src="this.resultRandom()" alt="result" />
       </div>
       <span class="slogn"></span>
-      <CommonBtn type="again" :style="{marginBottom: '8%'}"/>
-      <CommonBtn type="share" />
+      <CommonBtn type="again" :style="{marginBottom: '8%'}" />
+      <CommonBtn type="share" @click.native="share" />
     </main>
     <Footer />
-    <DotBg :dots="dots"/>
+    <DotBg :dots="dots" />
+    <div class="share-screen" v-show="this.shareActive" @click="share">
+      <img src="../assets/result/share-arrow.svg" alt />
+    </div>
   </div>
 </template>
 
@@ -27,6 +35,15 @@
 import Footer from '@/components/Footer.vue';
 import CommonBtn from '@/components/CommonBtn.vue';
 import DotBg from '@/components/DotBg.vue';
+import result1 from '../assets/result/1.png';
+import result2 from '../assets/result/2.png';
+import result3 from '../assets/result/3.png';
+import result4 from '../assets/result/4.png';
+import result5 from '../assets/result/5.png';
+import result6 from '../assets/result/6.png';
+import result7 from '../assets/result/7.png';
+import result8 from '../assets/result/8.png';
+import result9 from '../assets/result/9.png';
 
 export default {
   name: 'Result',
@@ -44,6 +61,8 @@ export default {
         [null, -54, 0, null, '44%'],
         [-20, null, null, -50, '44%'],
       ],
+      shareActive: false,
+      result: [result1, result2, result3, result4, result5, result6, result7, result8, result9],
     };
   },
   mounted() {
@@ -55,6 +74,15 @@ export default {
     //   console.log(heroBg);
     //   heroBg.style.transform = `translateY(${event.gamma}px)`;
     // }, false);
+  },
+  methods: {
+    share() {
+      this.shareActive = !this.shareActive;
+    },
+    resultRandom() {
+      const randomNum = Math.floor(Math.random() * this.result.length);
+      return this.result[randomNum];
+    },
   },
 };
 </script>
@@ -79,7 +107,9 @@ export default {
       width: 16%;
     }
 
-    .grades, .desc, .result {
+    .grades,
+    .desc,
+    .result {
       width: 100%;
       margin-bottom: 4%;
 
@@ -90,27 +120,37 @@ export default {
 
     .desc {
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
+      .desc-1, .desc-2 {
+        position: relative;
+        /* height: 4%; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .desc-1 {
+        width: 80vw;
+      }
+
+      .desc-2 {
+        h2 {
+          font-size: 24px;
+          line-height: 24px;
+          margin-left: 20px;
+        }
       }
 
       h2 {
+        position: absolute;
         font-family: DIN;
         font-size: 30px;
         line-height: 30px;
         color: #000000;
         text-align: center;
-        margin: 2px 0;
-
-        &:nth-of-type(2) {
-          font-size: 22px;
-          line-height: 22px;
-          position: relative;
-          right: -10px;
-        }
       }
 
       img {
@@ -125,15 +165,32 @@ export default {
         line-height: 120px;
         text-align: center;
         font-weight: bold;
-        color: #FFFFFF;
+        color: #ffffff;
         // text-shadow: 10px 0 0 #000, -10px 0 0 #000, 0 10px 0 #000, 0 -10px 0 #000, 5px 5px #000, -5px -5px 0 #000, 5px -5px 0 #000, -5px 5px 0 #000;
         -webkit-text-stroke: 6px #000;
       }
     }
 
     .desc {
-      width: 70%;
+      width: 70%
     }
+  }
+}
+
+.share-screen {
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+
+  img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 120px;
   }
 }
 </style>
